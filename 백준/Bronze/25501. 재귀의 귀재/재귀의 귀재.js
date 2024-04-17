@@ -1,40 +1,24 @@
 let input = require('fs').readFileSync('dev/stdin').toString().trim().split('\n');
 
-// console.log(input[0]);
-for(let i = 1; i < parseInt(input[0]) + 1; i++){
-    let str = input[i];
-    console.log(palindrome(str)+ ' ' + recursion(str));
+const isPalindrome = (str) => {
+    return recursion(str, 0, str.length - 1);
 }
 
-function palindrome(input){
-    let inputArr = input.split('');
-    let inputNewArr = [];
-
-    for(let i = inputArr.length-1; i >= 0; i--){
-        inputNewArr.push(inputArr[i])
-    }
-
-    if(inputArr.join('') === inputNewArr.join('')){
+const recursion = (str, first, last) => {
+    num += 1;
+    if(first >= last){
         return 1;
-    }else {
+    }
+    else if(str[first] != str[last]){
         return 0;
     }
+    else{
+        return recursion(str, first+1, last-1);
+    }
 }
 
-function recursion(input){
-    input = input.split('');
-    // console.log(input);
-
-    let num = 1;
-    let length = input.length - 1;
-
-    for(let i = 0; i <= length; i++){
-        if(i >= length - i || input[i] != input[length - i]){
-            break;
-        }
-        else if(i < length - i && input[i] == input[length - i]){
-            num += 1;
-        }
-    }
-    return(parseInt(num));
+for(let i = 1; i < parseInt(input[0]) + 1; i++){
+    const str = input[i];
+    var num = 0;
+    console.log(isPalindrome(str) + ' ' + num);
 }
