@@ -25,15 +25,16 @@ function recursion(input){
     input = input.split('');
     // console.log(input);
 
-    let num = 0;
+    let num = 1;
     let length = input.length - 1;
 
     for(let i = 0; i <= length; i++){
-        if(i >= length - i || input[i] != input[length - i])
+        if(i >= length - i || input[i] != input[length - i]){
             break;
+        }
         else if(i < length - i && input[i] == input[length - i]){
             num += 1;
         }
     }
-    return(parseInt(num) + 1);
+    return(parseInt(num));
 }
